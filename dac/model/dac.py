@@ -241,10 +241,10 @@ class DAC(BaseModel, CodecMixin):
                 Number of samples in input audio
         """
         z = self.encoder(audio_data)
-        z, codes, latents, commitment_loss, codebook_loss = self.quantizer(
+        z_q, codes, latents, commitment_loss, codebook_loss = self.quantizer(
             z, n_quantizers
         )
-        return z, codes, latents, commitment_loss, codebook_loss
+        return z, z_q, codes, latents, commitment_loss, codebook_loss
 
     def decode(self, z: torch.Tensor):
         """Decode given latent codes and return audio data
