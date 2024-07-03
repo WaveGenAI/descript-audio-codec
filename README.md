@@ -82,7 +82,7 @@ signal = AudioSignal('input.wav')
 signal.to(model.device)
 
 x = model.preprocess(signal.audio_data, signal.sample_rate)
-z, codes, latents, _, _ = model.encode(x)
+z, z_q, codes, latents, _, _ = model.encode(x)
 
 # Decode audio signal
 y = model.decode(z)
