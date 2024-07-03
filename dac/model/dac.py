@@ -226,6 +226,8 @@ class DAC(BaseModel, CodecMixin):
         dict
             A dictionary with the following keys:
             "z" : Tensor[B x D x T]
+                Continuous representation of input
+            "z_q" : Tensor[B x D x T]
                 Quantized continuous representation of input
             "codes" : Tensor[B x N x T]
                 Codebook indices for each codebook
