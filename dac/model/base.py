@@ -284,11 +284,12 @@ class CodecMixin:
 
         recons.normalize(obj.input_db)
         resample_fn(obj.sample_rate)
-        recons = recons[..., : obj.original_length]
         loudness_fn()
+   
         recons.audio_data = recons.audio_data.reshape(
-            -1, obj.channels, obj.original_length
+            -1, obj.channels, recons.audio_data.shape[-1]
         )
 
         self.padding = original_padding
         return recons
+
